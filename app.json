@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "weatherApp",
-    "slug": "weatherApp",
+    "name": "timerApp",
+    "slug": "timerApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.elmirguluzade.timerApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "640869ea-b499-416e-93df-4a669ad75fdc"
+      }
     }
   }
 }

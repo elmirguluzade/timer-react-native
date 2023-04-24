@@ -1,11 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View, StyleSheet, Image, StatusBar, Button, FlatList } from 'react-native';
+import ButtonComponent from './components/Button';
+import Lap from './components/Lap';
+import { useState } from 'react';
 
-export default function App() {
+const App = () => {
+  const [timer, setTimer] = useState('00:00:00')
+  const [laps, setLaps] = useState([])
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Image style={styles.image} source={require('./assets/clock.webp')} />
+      <Text style={styles.timer}>{timer}</Text>
+      <Lap laps={laps}/>
+      <ButtonComponent setTimer={setTimer} timer={timer} setLaps={setLaps} laps={laps}/>
     </View>
   );
 }
@@ -13,8 +20,16 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: StatusBar.currentHeight,
   },
-});
+  image: {
+    width: 250,
+  },
+  timer: {
+    fontSize: 60,
+    fontWeight: 600
+  },
+})
+
+export default App
