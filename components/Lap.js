@@ -1,11 +1,15 @@
-import { Text, View, StyleSheet, FlatList } from 'react-native';
+import { Text, View, StyleSheet, FlatList, Dimensions } from 'react-native';
 
 
 const Item = ({ title, index }) => {
   return (
     <View style={styles.allLists} key={index}>
-      <Text>{index}</Text>
-      <Text>{title}</Text>
+      <View style={styles.indexContainer}>
+        <Text style={styles.index}>{index}</Text>
+      </View>
+      <View>
+        <Text style={styles.title}>{title}</Text>
+      </View>
     </View>
   )
 }
@@ -16,6 +20,7 @@ const Lap = ({ laps }) => {
       <FlatList
         data={laps}
         renderItem={({ item, index }) => <Item title={item} index={index} />}
+        showsHorizontalScrollIndicator={false}
       />
     </View>
   );
@@ -24,15 +29,36 @@ const Lap = ({ laps }) => {
 
 const styles = StyleSheet.create({
   listContainer: {
-    flex: 1,
+    flex: 3,
     width: '100%',
-    justifyContent: 'center'
+    paddingLeft: 30,
+    paddingRight: 30,
   },
   allLists: {
-    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 10,
+    alignItems: 'center',
+    borderWidth: 0,
+    borderBottomColor: '#e6c97a',
+    borderBottomWidth: 1
+  },
+  index: {
+    fontSize: 20,
+    fontWeight: 700,
+    color: '#e6c97a',
     borderWidth: 1,
-    width: '90%',
-    borderColor: '#e6c97a'
+    borderColor: '#ccc',
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    paddingLeft: 14,
+    paddingTop: 5,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 600,
+    color: "#e6c97a"
   }
 })
 
